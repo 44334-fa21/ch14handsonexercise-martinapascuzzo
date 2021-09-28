@@ -1,13 +1,68 @@
 <!DOCTYPE html> 
 <html lang="en"> 
 	<head> 
-		<title>LASTNAME Chapter14HandsOnExercise</title> 
-		<meta charset="utf-8"> 
+		<title>PASCUZZO Chapter14HandsOnExercise</title> 
+		<meta charset="utf-8">
+		<!-- jQuery 1.8 or later, 33 KB -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+		<!-- Fotorama from CDNJS, 19 KB -->
+		<link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 		<style>
-		
+		 .fotorama{
+			 width: 30%;
+			 height: auto;
+		 }
 		</style>
 	</head> 
 <body> 
+	<h1>Enter your basic information below</h1>
+	<form method="post"
+      action="http://webdevbasics.net/scripts/demo.php"
+      onsubmit="return validateForm();">
+	<label for="userName">Name:</label>
+	<input type="text" name="userName" id="userName">
+	<label for="userAge">Age:</label>
+	<input type="text" name="userAge" id="userAge">
+	<label for="userCity">City:</label>
+	<input type="text" name="userCity" id="userCity">
+	<input type="submit" value="Send information" id="submit">
+</form>
+<br>
+<div class="fotorama"
+     data-hash="true">
+  <img src="abri1-min.jpg">
+  <img src="abri2-min.jpg">
+  <img src="Contempo1-min.png" id="three">
+  <img src="Preparacion2-min.png">
+</div>
 
+<!--Java Script-->
+	<script>
+		function validateForm(){
+                if(document.forms[0].userName.value == ""){
+                        alert("Name field cannot be empty.");
+                        return false;
+                }
+                if(document.forms[0].userAge.value < 18 || document.forms[0].userAge.value > 100) {
+                        alert("Age is less than 18. You do not have access.");
+                        return false;
+                }
+				if(document.forms[0].userCity.value == ""){
+                        alert("City field cannot be empty.");
+                        return false;
+                }
+
+                alert("Name, age and city are valid.");
+                return true;
+        }
+
+        $(document).ready(function(){
+                $('#more').click(function(){
+                        $('#details').toggle();
+                });
+        });
+	</script>
 </body> 
 </html> 
